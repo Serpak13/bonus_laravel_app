@@ -21,6 +21,8 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('type')->default(2);
             $table->tinyInteger('gender')->default(0);
+            $table->tinyInteger('type_registration')->default(0);
+            $table->date('birth_date')->nullable();
         });
     }
 
@@ -30,7 +32,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-
+            $table->dropColumn('phone');
+            $table->dropColumn('organizer_id');
+            $table->dropColumn('first_name');
+            $table->dropColumn('last_name');
+            $table->dropColumn('patronymic');
+            $table->dropColumn('status');
+            $table->dropColumn('type');
+            $table->dropColumn('gender');
+            $table->dropColumn('type_registration');
+            $table->dropColumn('birth_date');
         });
     }
 };
